@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery-2.1.4.js"></script>
+</head>
+<body>
+   <input type="text" id="messsageId" name="message" />
+   <input type="button" value="提交" onclick="jasonpF()">
+   <script type="text/javascript">
+       function jsonpF(){
+    	   $.ajax({
+    		   url:"http://127.0.0.1:8080/SpringMVCJ163/getJSON.action",
+    		   type:"GET",
+    		   dataType:"jsonp",
+          jsonp:"theFunction",
+          success:function(data){
+        	  alert(data.name)
+          }
+    	   });
+       }
+   </script>
+</body>
+</html>
