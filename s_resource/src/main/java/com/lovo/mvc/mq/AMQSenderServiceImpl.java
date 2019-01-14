@@ -1,6 +1,7 @@
 package com.lovo.mvc.mq;
 
 import javax.jms.JMSException;
+import javax.jms.MapMessage;
 import javax.jms.Session;
 
 import org.apache.activemq.Message;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
+
+import com.google.gson.Gson;
 @Service("amqSenderService")
 public class AMQSenderServiceImpl implements AmqSenderService{
 	  private static final Logger logger = Logger.getLogger(AMQSenderServiceImpl.class);
@@ -23,6 +26,8 @@ public class AMQSenderServiceImpl implements AmqSenderService{
 	    private ActiveMQQueue destinationQueue;
          @Autowired
          private ActiveMQTopic destinationTopic;
+         @Autowired
+         private ActiveMQTopic resourcetodipath;
 	    //向特定的队列发送消息
 	    @Override
 	    public void sendMsgQueue(String msg) {
@@ -56,5 +61,17 @@ public class AMQSenderServiceImpl implements AmqSenderService{
 	            logger.error("向队列{}发送消息失败，消息为：{}"+destinationQueue+ msg);
 	        }
 			
+		}
+		public void sendModel(final Object obj){
+			final Gson gson=new Gson();
+			final String json = gson.toJson(obj);
+			System.out.println(json);
+			jmsTemplate.send(resourcetodipath,new MessageCreator() {
+				public Message createMessage(Session session) throws JMSException {
+					final Message message = (Message) session.createTextMessage(json);
+					return message;
+				}
+				
+			});
 		}
 }

@@ -305,6 +305,14 @@
     <version>5.9.0</version>
 </dependency>
 <!-- end MQ -->
+
+<!-- Gson -->
+<dependency>
+	<groupId>com.google.code.gson</groupId>
+	<artifactId>gson</artifactId>
+	<version>2.7</version>
+</dependency>
+
 	</dependencies>
 
 

@@ -44,6 +44,14 @@
     <bean id="destinationTopic" class="org.apache.activemq.command.ActiveMQTopic">
         <constructor-arg index="0" value="j163Topic"/>
     </bean>
+        <!--测试Topic-->
+    <bean id="reporttodispatch" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg index="0" value="j16351"/>
+    </bean>
+        <!--测试Topic-->
+    <bean id="resourcetodipath" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg index="0" value="j16353"/>
+    </bean>
 
  <!--消息监听器-->
     <bean id="messageListener" class="com.lovo.mvc.mq.MyMessageListener">
@@ -63,6 +71,8 @@
         <property name="connectionFactory" ref="cachingConnectionFactory"/>
          <!-- 注入的队列监听器收到的就是队列消息，注入主题收到的就是订阅发布内容 -->
         <property name="destination" ref="destinationTopic"/>
+        <property name="destination" ref="reporttodispatch"/>
+        <property name="destination" ref="resourcetodipath"/>
         <property name="messageListener" ref="messageTopicListener"/>        
     </bean>
    

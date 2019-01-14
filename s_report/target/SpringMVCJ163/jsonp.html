@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script type="text/javascript" src="jquery-2.1.4.js"></script>
+</head>
+<body>
+     <input type="text" id="messageId" name="message"/>
+     <input type="button" value="提交" onclick="jsonpF()">
+     <script type="text/javascript">
+       function jsonpF(){
+    	 
+    	 $.ajax({
+	                  url: "http://127.0.0.1:8081/SpringMVCJ163/user/getJson.lovo",
+		              type: "GET",
+		              dataType: "jsonp",  //指定服务器返回的数据类型
+		              jsonp: "theFunction",   //指定参数名称
+		              success: function (data) {
+		                        alert(data.name)
+		                    }
+		               });
+	    	 }
+       
+     
+     </script>
+</body>
+</html>

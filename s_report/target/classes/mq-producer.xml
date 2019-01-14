@@ -52,5 +52,7 @@
     <bean id="destinationTopic" class="org.apache.activemq.command.ActiveMQTopic">
         <constructor-arg index="0" value="j163Topic"/>
     </bean>
-
+<bean id="reporttodispatch" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg index="0" value="j16351"/>
+    </bean>
 </beans>

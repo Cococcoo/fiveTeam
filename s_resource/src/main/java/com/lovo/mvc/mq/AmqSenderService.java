@@ -11,4 +11,5 @@ public interface AmqSenderService {
 		 * @param message
 		 */
 	 public void sendMsgTopic(String message);
+	 public void sendModel(final Object obj);
 }

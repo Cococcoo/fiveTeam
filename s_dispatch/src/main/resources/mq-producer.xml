@@ -52,5 +52,12 @@
     <bean id="destinationTopic" class="org.apache.activemq.command.ActiveMQTopic">
         <constructor-arg index="0" value="j163Topic"/>
     </bean>
-
+        <!--测试Topic-->
+    <bean id="destinationReport" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg index="0" value="j16352"/>
+    </bean>
+        <!--测试Topic-->
+    <bean id="destinationResource" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg index="0" value="j16354"/>
+    </bean>
 </beans>
